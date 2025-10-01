@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 4</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body>
+  <h2>This is a square function:</h2>
+
+  <input type="text" id="numInput" placeholder="Enter a number">
+  <button id="btn">Enter</button>
+
+  <p id="result"></p>
+
+  <script>
+    function createSquareClosure() {
+      return function(num) {
+        return num*num;
+      };
+    }
+
+    const square = createSquareClosure();
+    const input = document.getElementById('numInput');
+    const btn = document.getElementById('btn');
+    const result = document.getElementById('result');
+
+    function showSquare() {
+      const num = Number(input.value);
+      const sq = square(num);
+      result.innerText=`The square of ${num} is ${sq}`;
+    }
+
+    btn.addEventListener('click', showSquare);
+    input.addEventListener('keydown',function(e){
+      if (e.key==='Enter') showSquare();
+    });
+  </script>
+</body>
+</html>
